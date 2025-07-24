@@ -11,7 +11,7 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import styles from './Dashboard.module.css';
 import ProgressChart from '../components/ProgressChart';
-import { getWeather } from '../utils/weather';
+//import { getWeather } from '../utils/weather';
 import { useRef } from 'react';
 
 function getHabitIcon(habit) {
@@ -24,6 +24,20 @@ function getHabitIcon(habit) {
   if (name.includes('meditate')) return '🧘‍♂️';
   if (name.includes('drink') || name.includes('water')) return '💧';
   if (name.includes('dance')) return '💃';
+  if (name.includes('exercise') || name.includes('workout')) return '🏋️';
+  if (name.includes('sleep') || name.includes('nap')) return '😴';
+  if (name.includes('study') || name.includes('learn')) return '📖';
+  if (name.includes('cook') || name.includes('meal')) return '🍳';
+  if (name.includes('clean') || name.includes('tidy')) return '🧹';
+  if (name.includes('journal') || name.includes('write')) return '📝';
+  if (name.includes('social') || name.includes('call') || name.includes('message')) return '📱';
+  if (name.includes('gratitude') || name.includes('thankful')) return '🙏';
+  if (name.includes('stretch') || name.includes('flexibility')) return '🤸';
+  if (name.includes('habit') || name.includes('routine')) return '🔄';
+  if (name.includes('goal') || name.includes('target')) return '🎯';
+  if (name.includes('budget') || name.includes('finance')) return '💰';
+  if (name.includes('singing')) return '🎤';
+
   // Add more as needed
   return '⭐'; // Default icon
 }
@@ -37,11 +51,11 @@ function Dashboard() {
   const [reminderTimes, setReminderTimes] = useState({});
   const [countdowns, setCountdowns] = useState({});
   const [showChart, setShowChart] = useState(false);
-  const [missedDays, setMissedDays] = useState({});
-  const [weather, setWeather] = useState(null);
+ // const [missedDays, setMissedDays] = useState({});
+ // const [weather, setWeather] = useState(null);
   const [showSummary, setShowSummary] = useState({}); // { [habitId]: true/false }
   const notifiedHabitsRef = useRef({}); // To avoid duplicate notifications
-  const weatherSuggestedRef = useRef(false);
+ // const weatherSuggestedRef = useRef(false);
   const missedNotifiedRef = useRef({});
 
   const fetchHabitInsights = async (habit) => {
@@ -161,7 +175,7 @@ function Dashboard() {
       }
     });
     setShowSummary(updatedShowSummary);
-  }, [habits]);
+  }, [habits, showSummary]);
 
   // Missed yesterday notification (only for habits created before yesterday)
   useEffect(() => {
@@ -204,22 +218,22 @@ function Dashboard() {
   }, [habits]);
 
   // Helper to calculate longest streak
-  function getLongestStreak(dates) {
-    if (!dates || dates.length === 0) return 0;
-    const sorted = [...dates].sort();
-    let maxStreak = 1, currentStreak = 1;
-    for (let i = 1; i < sorted.length; i++) {
-      const prev = moment(sorted[i - 1]);
-      const curr = moment(sorted[i]);
-      if (curr.diff(prev, 'days') === 1) {
-        currentStreak++;
-        maxStreak = Math.max(maxStreak, currentStreak);
-      } else {
-        currentStreak = 1;
-      }
-    }
-    return maxStreak;
-  }
+  // function getLongestStreak(dates) {
+  //   if (!dates || dates.length === 0) return 0;
+  //   const sorted = [...dates].sort();
+  //   let maxStreak = 1, currentStreak = 1;
+  //   for (let i = 1; i < sorted.length; i++) {
+  //     const prev = moment(sorted[i - 1]);
+  //     const curr = moment(sorted[i]);
+  //     if (curr.diff(prev, 'days') === 1) {
+  //       currentStreak++;
+  //       maxStreak = Math.max(maxStreak, currentStreak);
+  //     } else {
+  //       currentStreak = 1;
+  //     }
+  //   }
+  //   return maxStreak;
+  // }
 
   const markHabitComplete = async (habitId) => {
     const token = localStorage.getItem('token');
@@ -496,9 +510,9 @@ function Dashboard() {
               const progress = habit.targetDays
                 ? Math.min((habit.completionDates?.length || 0) / habit.targetDays * 100, 100)
                 : 0;
-              const daysCompleted = habit.completionDates?.length || 0;
-              const daysMissed = habit.targetDays ? habit.targetDays - daysCompleted : 0;
-              const longestStreak = getLongestStreak(habit.completionDates);
+             // const daysCompleted = habit.completionDates?.length || 0;
+              //const daysMissed = habit.targetDays ? habit.targetDays - daysCompleted : 0;
+             // const longestStreak = getLongestStreak(habit.completionDates);
 
               return (
                 <motion.div
@@ -610,7 +624,7 @@ function Dashboard() {
           )}
 
           {/* Summary Modal/Toast for completed habits */}
-          {habits.map(habit => (
+          {/* {habits.map(habit => (
             showSummary[habit._id] && (
               <div key={habit._id} className="modal show" style={{ display: 'block', background: 'rgba(0,0,0,0.5)' }}>
                 <div className="modal-dialog modal-dialog-centered">
@@ -634,7 +648,7 @@ function Dashboard() {
                 </div>
               </div>
             )
-          ))}
+          ))} */}
 
           {selectedHabit && (
             <EditHabitModal

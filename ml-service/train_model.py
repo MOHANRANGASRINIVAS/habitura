@@ -5,7 +5,7 @@ import joblib
 
 # Load data (must contain: streak, targetDays, success)
 import os
-csv_path = os.path.join(os.path.dirname(__file__), "habit_success_data_extended.csv")
+csv_path = os.path.join(os.path.dirname(__file__), "habit_success.csv")
 df = pd.read_csv(csv_path)
 
 # Features and label

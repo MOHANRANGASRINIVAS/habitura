@@ -113,7 +113,7 @@
   border: none;
   border-bottom: 2.5px solid #7ea7c7;
   background: rgba(255,255,255,0.18);
-  color: #fff;
+  color: #000000;
   font-size: 1.08rem;
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
@@ -128,14 +128,14 @@
   background: #e3edf7;
 }
 .input::placeholder {
-  color: #e3edf7;
+  color: #000000;
   opacity: 1;
 }
 .floatingLabel {
   position: absolute;
   left: 14px;
   top: 18px;
-  color: #7ea7c7;
+  color: #000000;
   font-size: 1.08rem;
   pointer-events: none;
   transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
@@ -224,12 +224,15 @@
   pointer-events: none;
   z-index: 3;
 }
-.registerTitle, .registerSubtitle, .floatingLabel, .strengthBar, .loginText, .loginText a, .desc, .title {
-  color: #fff !important;
+.registerTitle, .registerSubtitle, .strengthBar, .loginText, .loginText a, .desc, .title {
+  color: #ffffff !important;
+}
+.floatingLabel{
+  color: rgb(0, 0, 0) !important;
 }
 .input {
   background: rgba(255,255,255,0.18);
-  color: #fff;
+  color: #000000;
 }
 .input::placeholder {
   color: #e3edf7;
