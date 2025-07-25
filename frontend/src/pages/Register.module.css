@@ -254,3 +254,108 @@
     padding: 24px 8px;
   }
 } 
+
+/* Additional Responsive Enhancements */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .desc {
+    font-size: 1rem;
+    text-align: center;
+    padding-left: 12px;
+    border-left: 3px solid #7ea7c7;
+  }
+
+  .registerTitle {
+    font-size: 1.7rem;
+  }
+
+  .registerSubtitle {
+    font-size: 1rem;
+  }
+
+  .input {
+    font-size: 1rem;
+    padding: 16px 44px 10px 14px;
+  }
+
+  .floatingLabel {
+    font-size: 1rem;
+  }
+
+  .input:focus + .floatingLabel,
+  .input:not(:placeholder-shown) + .floatingLabel {
+    font-size: 0.85rem;
+  }
+
+  .registerBtn {
+    font-size: 1rem;
+    padding: 11px 0;
+  }
+
+  .leftPanel {
+    align-items: center;
+    text-align: center;
+    padding: 24px 16px;
+  }
+
+  .rightPanel {
+    padding: 24px 16px;
+    justify-content: center;
+  }
+
+  .registerBox {
+    padding: 28px 16px;
+    width: 100%;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .desc {
+    font-size: 0.95rem;
+    padding-left: 10px;
+  }
+
+  .registerTitle {
+    font-size: 1.5rem;
+  }
+
+  .registerSubtitle {
+    font-size: 0.95rem;
+  }
+
+  .input {
+    padding: 14px 40px 10px 12px;
+    font-size: 0.98rem;
+  }
+
+  .registerBtn {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+
+  .icon {
+    font-size: 1rem;
+  }
+
+  .loginText {
+    font-size: 0.95rem;
+  }
+
+  .floatingLabel {
+    font-size: 0.95rem;
+  }
+
+  .input:focus + .floatingLabel,
+  .input:not(:placeholder-shown) + .floatingLabel {
+    font-size: 0.8rem;
+  }
+}
